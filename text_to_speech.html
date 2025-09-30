@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McLaren AI - Text-to-Speech</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">McLaren AI</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="sentiment.html">Feedback Analysis</a>
+            <a href="login.html">Login</a>
+            <a href="text_to_speech.html" class="active">T_to_S</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 40px;">
+        <h2>Text-to-Speech Accessibility</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Input any text and use the browser's speech API to convert it to audio.</p>
+
+        <section class="tts-tool" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #111; border-radius: 6px;">
+            <label for="ttsText" style="display: block; margin-bottom: 10px; color: var(--mclaren-orange);">Text Input:</label>
+            <textarea id="ttsText" placeholder="Enter text to be read aloud..." rows="6">This is a demonstration of the text-to-speech module, simulating the accessibility features provided by a cognitive service like Watson TTS.</textarea>
+            <button onclick="speakText()" style="width: 100%; margin-bottom: 20px;">Speak Text</button>
+            <div id="ttsStatus" style="margin-top: 10px; text-align: center; color: #ccc;">Status: Ready</div>
+        </section>
+        
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McLaren AI - Feedback Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">McLaren AI</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="sentiment.html" class="active">Feedback Analysis</a>
+            <a href="login.html">Login</a>
+            <a href="text_to_speech.html">T_to_S</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 40px;">
+        <h2>Natural Language Understanding (NLU)</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Input any fan feedback to see its *simulated* sentiment score.</p>
+
+        <section class="nlu-tool" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #111; border-radius: 6px;">
+            <label for="feedbackText" style="display: block; margin-bottom: 10px; color: var(--mclaren-orange);">Enter Text for Analysis:</label>
+            <textarea id="feedbackText" placeholder="Example: The team's strategy was genius, but the pit stop was disappointingly slow." rows="6"></textarea>
+            <button onclick="analyzeSentiment()" style="width: 100%; margin-bottom: 20px;">Analyze Feedback</button>
+            <div id="sentimentResult">Enter text and click 'Analyze'</div>
+        </section>
+        
+    </main>
+
+    <script>
+        /*
+         * analyzeSentiment() - Client-side simulation of NLU sentiment analysis.
+         * Detects keywords to mock positive, negative, and neutral scores.
+         */
+        function analyzeSentiment() {
+            const text = document.getElementById('feedbackText').value;
+            const resultDiv = document.getElementById('sentimentResult');
+            const lowerText = text.toLowerCase();
+
+            if (text.trim() === "") {
+                resultDiv.innerHTML = 'Please enter some text to analyze.';
+                resultDiv.className = 'neutral';
+                return;
+            }
+
+            // Simple Keyword-based Sentiment Logic
+            let sentiment = 'NEUTRAL';
+            let score = 0.0;
+            
+            // Keywords that signal positive sentiment
+            const positiveKeywords = ['great', 'fantastic', 'excellent', 'thrilling', 'genius', 'perfect', 'love', 'amazing', 'best'];
+            // Keywords that signal negative sentiment
+            const negativeKeywords = ['bad', 'slow', 'issue', 'disappointed', 'terrible', 'fail', 'mistake', 'poor', 'worst'];
+            
+            let posCount = positiveKeywords.filter(k => lowerText.includes(k)).length;
+            let negCount = negativeKeywords.filter(k => lowerText.includes(k)).length;
+            
+            if (posCount > negCount) {
+                sentiment = 'POSITIVE';
+                // Random score between 0.6 and 0.99
+                score = (Math.random() * (0.99 - 0.6)) + 0.6; 
+                resultDiv.className = 'positive';
+            } else if (negCount > posCount) {
+                sentiment = 'NEGATIVE';
+                // Random score between -0.99 and -0.6
+                score = (Math.random() * (0.99 - 0.6)) + 0.6; 
+                score = -score; // Make it negative
+                resultDiv.className = 'negative';
+            } else {
+                sentiment = 'NEUTRAL';
+                // Random score between -0.2 and 0.2
+                score = (Math.random() * 0.4) - 0.2; 
+                resultDiv.className = 'neutral';
+            }
+
+            resultDiv.innerHTML = `Sentiment: ${sentiment} (Score: ${score.toFixed(2)})`;
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

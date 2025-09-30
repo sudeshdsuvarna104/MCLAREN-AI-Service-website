@@ -1,0 +1,183 @@
+/*
+ * style.css
+ * McLaren AI Services Website Core Stylesheet
+ * Uses Papaya Orange accent and dark mode aesthetic.
+ */
+
+:root {
+    --mclaren-orange: #FF8700; /* Papaya Orange */
+    --mclaren-dark: #1F1F1F;  /* Dark Gray/Black */
+    --mclaren-light: #F0F0F0; /* Off-White/Light Gray */
+    --font-stack: 'Montserrat', sans-serif;
+}
+
+/* Global Reset and Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-stack);
+    background-color: var(--mclaren-dark);
+    color: var(--mclaren-light);
+    line-height: 1.6;
+    padding-top: 60px; /* Space for fixed header */
+}
+
+/* --- Header and Navigation --- */
+header {
+    background-color: #000000;
+    color: var(--mclaren-light);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--mclaren-orange);
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--mclaren-orange);
+    letter-spacing: 1px;
+}
+
+nav a {
+    color: var(--mclaren-light);
+    text-decoration: none;
+    padding: 8px 15px;
+    margin-left: 10px;
+    transition: color 0.3s, background-color 0.3s, border-radius 0.3s;
+    font-weight: 500;
+}
+
+nav a:hover, nav a.active {
+    color: var(--mclaren-dark);
+    background-color: var(--mclaren-orange);
+    border-radius: 4px;
+}
+
+/* --- Main Content Layout --- */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 5%;
+    background-color: #2c2c2c; /* Slightly lighter inner background */
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    min-height: 80vh;
+}
+
+h1, h2 {
+    color: var(--mclaren-orange);
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* --- Forms and Interactive Elements --- */
+textarea, input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #555;
+    background-color: #3a3a3a;
+    color: var(--mclaren-light);
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+textarea:focus, input:focus {
+    border-color: var(--mclaren-orange);
+    outline: none;
+}
+
+button {
+    background-color: var(--mclaren-orange);
+    color: var(--mclaren-dark);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #e67d00;
+    transform: translateY(-2px);
+}
+button:active {
+    transform: translateY(0);
+}
+
+
+/* --- Sentiment Result Styling --- */
+#sentimentResult {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.positive {
+    background-color: #28a745; /* Green */
+}
+
+.negative {
+    background-color: #dc3545; /* Red */
+}
+
+.neutral {
+    background-color: #ffc107; /* Yellow */
+    color: var(--mclaren-dark);
+}
+
+/* --- Utility/Message Boxes --- */
+.message-box {
+    position: fixed; 
+    top: 70px; 
+    right: 20px; 
+    background-color: var(--mclaren-orange); 
+    color: var(--mclaren-dark);
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    font-weight: bold;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: opacity 0.3s;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+    nav {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav a {
+        margin: 5px;
+        padding: 5px 10px;
+        font-size: 0.9em;
+    }
+    .container {
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+}
